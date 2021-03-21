@@ -98,18 +98,18 @@ void Director::DrawSnake()
     // Determine if hit the wall.
     if (snake.at(0).pos_x_ <=0 || snake.at(0).pos_x_ >= COLS-1 ||
         snake.at(0).pos_y_ <= 1 || snake.at(0).pos_y_ >= LINES-1)
-    { GameOver(CrashWall); }
+    { GameOver(CrashWall); return; }
 
     // Determine if hit itself.
     if ('O' == mvinch(snake.at(0).pos_y_ + direct.y_, snake.at(0).pos_x_ + direct.x_))
-    { GameOver(CrashSelf); }
+    { GameOver(CrashSelf); return; }
 
     if (snake.at(0).pos_x_ == food_x && snake.at(0).pos_y_ == food_y)
     {
         eaten = true;
         // Update the score and determine if win.
         scores += 10;
-        if (scores >= 60) { GameOver(Win); }
+        if (scores >= 60) { GameOver(Win); return; }
         move(0, COLS/2 + 4);
         printw("%d", scores);
         // Generate another food.
