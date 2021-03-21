@@ -56,7 +56,7 @@ void Director::Init()
     snake.emplace_back(3,6);
 
     // Set Timer
-    SetTicker(300);
+    SetTicker(80);
     signal(SIGALRM, Director::SigHandler);
 }
 
@@ -93,6 +93,8 @@ void Director::DrawSnake()
     printw("$");
 
     bool eaten = false;
+
+    // Change the direction.
     snake.emplace_front(snake.at(0).pos_x_ + direct.x_, snake.at(0).pos_y_ + direct.y_);
 
     // Determine if hit the wall.
@@ -101,7 +103,7 @@ void Director::DrawSnake()
     { GameOver(CrashWall); return; }
 
     // Determine if hit itself.
-    if ('O' == mvinch(snake.at(0).pos_y_ + direct.y_, snake.at(0).pos_x_ + direct.x_))
+    if ('O' == mvinch(snake.at(0).pos_y_, snake.at(0).pos_x_))
     { GameOver(CrashSelf); return; }
 
     if (snake.at(0).pos_x_ == food_x && snake.at(0).pos_y_ == food_y)
