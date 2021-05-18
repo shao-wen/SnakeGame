@@ -1,8 +1,11 @@
-Some problems：
-由于定时器更新射体频率较慢（比如：0.3s
+# Request
+Make sure you are running this program under Linux environment.
 
-当按下两个方向键且间隔小于0.3s的时候，看似可以。
-实则不是，这是因为Input函数更新了current_direction的值，但还未来得及打印蛇的行径，又改变了一次方向，
+
+# Some problems：
+定时器更新射体频率较慢（比如：0.3s
+
+当按下两个方向键且间隔小于0.3s的时候，看似可以正常移动，实则不是，这是因为Input函数更新了current_direction的值，但还未来得及打印蛇的行径时射又改变了一次方向，
 导致current_direction被改变了两次，而Direct current_direction;却只被改变了一次。
 
 比如蛇向下走，此时瞬间按出左,上键，看似蛇先会往左然后再往上，实则不是：
