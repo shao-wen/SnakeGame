@@ -7,7 +7,7 @@ Make sure you are running this program under Linux environment.
 ## Clone
 
 ```git
-git clone git@github.com:shaowen0909/SnakeGame.git
+$ git clone git@github.com:shaowen0909/SnakeGame.git
 ```
 
 ## Build
